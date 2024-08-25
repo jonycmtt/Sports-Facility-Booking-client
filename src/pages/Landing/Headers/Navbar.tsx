@@ -1,3 +1,5 @@
+import { Button } from "antd";
+import { LuUsers2 } from "react-icons/lu";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -47,7 +49,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-black text-white">
+    <div className="bg-nature text-white">
       <div className="navbar max-w-7xl mx-auto ">
         <div className="navbar-start">
           <div className="dropdown">
@@ -69,18 +71,27 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-lg"
             >
               {items}
             </ul>
           </div>
-          <a className="btn btn-ghost text-4xl">Sports</a>
+          <div>
+            <img
+              className="w-44"
+              src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/logo.svg"
+              alt=""
+            />
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{items}</ul>
+          <ul className="menu menu-horizontal px-1 font-bold">{items}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn btn-neutral">Login</a>
+          <button className="btn btn-sm sm:btn-md text-lg text-[#097e52]">
+            <LuUsers2 />
+            <span>Login/Register</span>
+          </button>
         </div>
       </div>
       {/* <Layout>

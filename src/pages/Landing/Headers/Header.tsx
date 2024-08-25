@@ -1,7 +1,9 @@
+import HeroSection from "./HeroSection";
+
 const Header = () => {
   return (
     <div>
-      <h2>This is Header component</h2>
+      <HeroSection />
     </div>
   );
 };
