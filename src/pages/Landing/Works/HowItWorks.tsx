@@ -11,8 +11,8 @@ const HowItWorks = () => {
         }
       />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center mt-16">
-        <div className="card card-bordered bg-white group transition-all py-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center mt-16 z-30">
+        <div className="card card-bordered border-2 border-[#eee] bg-white group transition-all py-4">
           <div className="card-body items-center ">
             <div className="size-20 bg-[#fafafa] rounded-xl p-3 group-hover:rotate-45 transition-all group-hover:bg-[#097e52]">
               <img
@@ -31,7 +31,7 @@ const HowItWorks = () => {
             </button>
           </div>
         </div>
-        <div className="card card-bordered bg-white group transition-all py-4">
+        <div className="card card-bordered border-2 border-[#eee] bg-white group transition-all py-4">
           <div className="card-body items-center">
             <div className="size-20 bg-[#fafafa] rounded-xl p-3 group-hover:rotate-45 transition-all group-hover:bg-[#097e52]">
               <img
@@ -52,7 +52,7 @@ const HowItWorks = () => {
             </button>
           </div>
         </div>
-        <div className="card card-bordered bg-white group transition-all py-4">
+        <div className="card card-bordered border-2 border-[#eee] bg-white group transition-all py-4">
           <div className="card-body items-center">
             <div className="size-20 bg-[#fafafa] rounded-xl p-3 group-hover:rotate-45 transition-all group-hover:bg-[#097e52]">
               <img

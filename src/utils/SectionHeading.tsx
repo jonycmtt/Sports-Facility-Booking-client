@@ -2,7 +2,7 @@ import { TSectionHeading } from "../types";
 
 const SectionHeading = ({ title, dec, span }: TSectionHeading) => {
   return (
-    <div className="text-center relative -z-10">
+    <div className="text-center relative z-10">
       <h2 className="text-4xl font-bold text-[#333] mb-2">
         {title} <span className="primary-liner">{span}</span>
       </h2>

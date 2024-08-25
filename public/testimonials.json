@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Sarah Thompson",
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/profiles/user-01.jpg",
+    "feedback": "Booking courts has never been easier! The platform is super user-friendly, and I love how quickly I can find available slots for my tennis practice. Highly recommend!",
+    "statue": "Quality Matters"
+  },
+  {
+    "name": "Michael Rodriguez",
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/profiles/user-02.jpg",
+    "feedback": "This booking platform is a game-changer for our soccer team. We can easily find and book fields for our matches without any hassle. The customer support is top-notch too!",
+    "statue": "Excellent Professionalism"
+  },
+  {
+    "name": "Emily Chen",
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/profiles/user-03.jpg",
+    "feedback": "I love how this platform has made finding and booking yoga studios so convenient. The variety of options and the ease of use are just fantastic!",
+    "statue": "Quality Matters"
+  },
+  {
+    "name": "David Patel",
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/profiles/user-04.jpg",
+    "feedback": "The booking system is seamless! I can always find a court to play basketball with my friends, and the reminders make sure we never miss our slots. Great job!",
+    "statue": "Excellent Professionalism"
+  },
+  {
+    "name": "Jessica Lee",
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/profiles/user-02.jpg",
+    "feedback": "Finding and booking cycling trails has never been this easy. The platform is incredibly efficient, and I appreciate the detailed descriptions of each facility. A must-use for any sports enthusiast!",
+    "statue": "Quality Matters"
+  },
+  {
+    "name": "Jessica Lee",
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/profiles/user-01.jpg",
+    "feedback": "Finding and booking cycling trails has never been this easy. The platform is incredibly efficient, and I appreciate the detailed descriptions of each facility. A must-use for any sports enthusiast!",
+    "statue": "Excellent Professionalism"
+  }
+]
