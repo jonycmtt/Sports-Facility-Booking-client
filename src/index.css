@@ -24,6 +24,13 @@ body {
   background-size: cover;
   background-position: center;
 }
+.siteBanner {
+  width: 100%;
+  background: url("https://dreamsports.dreamstechnologies.com/react/template/static/media/convenient-bg.a6e2646445e571e2fade.jpg")
+    no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 
 .primary-liner {
   -webkit-text-fill-color: #0000;

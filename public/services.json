@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/services/service-01.jpg",
+    "name": "Court Rent"
+  },
+  {
+    "id": 2,
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/services/service-02.jpg",
+    "name": "Group Lesson"
+  },
+  {
+    "id": 3,
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/services/service-03.jpg",
+    "name": "Training Program"
+  },
+  {
+    "id": 4,
+    "image": "https://dreamsports.dreamstechnologies.com/react/template/assets/img/services/service-04.jpg",
+    "name": "Private Lessons"
+  }
+]

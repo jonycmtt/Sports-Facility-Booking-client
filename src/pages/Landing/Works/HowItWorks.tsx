@@ -1,4 +1,4 @@
-import SectionHeading from "../../../../utils/sectionHeading";
+import SectionHeading from "../../../utils/SectionHeading";
 
 const HowItWorks = () => {
   return (
