@@ -45,6 +45,17 @@ body {
   font-size: inherit;
 }
 
+.news-letter {
+  background: linear-gradient(
+    93.86deg,
+    #006177 -2.6%,
+    #269089 67.39%,
+    #7abc82 110.84%
+  );
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 /* slider */
 
 .swiper {
