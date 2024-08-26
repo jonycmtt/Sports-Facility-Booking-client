@@ -1,5 +1,5 @@
 import { LuUsers2 } from "react-icons/lu";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const items = (
@@ -87,10 +87,12 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 font-bold">{items}</ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-sm sm:btn-md text-lg text-[#097e52]">
-            <LuUsers2 />
-            <span>Login/Register</span>
-          </button>
+          <Link to="/login">
+            <button className="btn btn-sm sm:btn-md text-lg text-[#097e52]">
+              <LuUsers2 />
+              <span>Login/Register</span>
+            </button>
+          </Link>
         </div>
       </div>
       {/* <Layout>
