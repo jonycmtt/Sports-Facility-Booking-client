@@ -3,6 +3,7 @@ import MainForm from "../../components/form/MainForm";
 import FormInput from "../../components/form/FormInput";
 import { Link } from "react-router-dom";
 import { GoogleCircleFilled } from "@ant-design/icons";
+import FormTextArea from "../../components/form/FormTextArea";
 
 export type TRegisterUser = {
   name: string;
@@ -11,6 +12,7 @@ export type TRegisterUser = {
   phone: string;
   address: string;
   role: string;
+  profilePic: string;
 };
 
 const Register = () => {
@@ -22,6 +24,7 @@ const Register = () => {
       phone: data.phone,
       address: data.address,
       role: "user",
+      profilePic: data.profilePic,
     };
 
     console.log(registerInfo);
@@ -47,6 +50,10 @@ const Register = () => {
               type="text"
               name={"address"}
               placeholder="Your Address"
+            />
+            <FormTextArea
+              name={"profilePic"}
+              placeholder="Profile Image link"
             />
             <Button
               type="primary"

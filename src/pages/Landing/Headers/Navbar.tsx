@@ -2,6 +2,11 @@ import { LuUsers2 } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const user = {
+    ADMIN: "admin",
+    USER: "user",
+  };
+  const currentUser = user.ADMIN;
   const items = (
     <>
       <li>
@@ -44,6 +49,29 @@ const Navbar = () => {
           Facilities
         </NavLink>
       </li>
+      {currentUser === "admin" ? (
+        <li>
+          <NavLink
+            to="/admin/dashboard"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : (
+        <li>
+          <NavLink
+            to="/user/dashboard"
+            className={({ isActive, isPending }) =>
+              isPending ? "pending" : isActive ? "active" : ""
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
     </>
   );
 

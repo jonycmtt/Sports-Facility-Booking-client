@@ -5,11 +5,13 @@
 @tailwind utilities;
 
 body {
-  color: #6b7385;
   font-family: Outfit, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+}
+.outfit {
+  font-family: Outfit, sans-serif !important;
 }
 
 .bg-nature {
@@ -43,6 +45,7 @@ body {
   background-clip: border-box;
   -webkit-background-clip: text;
   font-size: inherit;
+  font-weight: bold;
 }
 
 .news-letter {

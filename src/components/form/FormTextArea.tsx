@@ -9,7 +9,7 @@ type TInputProps = {
   label?: string;
 };
 
-const FormTextArea = ({ name, label }: TInputProps) => {
+const FormTextArea = ({ name, label, placeholder }: TInputProps) => {
   return (
     <div className="mb-4">
       <Controller
@@ -20,7 +20,7 @@ const FormTextArea = ({ name, label }: TInputProps) => {
               {...field}
               id={name}
               autoSize={{ minRows: 3, maxRows: 5 }}
-              placeholder={"Enter Comment"}
+              placeholder={placeholder ? placeholder : "Enter Comment"}
             />
             {error && <small className="text-red-600">{error.message}</small>}
           </Form.Item>

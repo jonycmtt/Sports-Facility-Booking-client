@@ -3,6 +3,7 @@ import Bookings from "../pages/dashboard/admin/bookings/Bookings";
 import CreateFacilities from "../pages/dashboard/admin/facilites/CreateFacilities";
 import AllUsers from "../pages/dashboard/admin/Users/AllUsers";
 import CreateAdmin from "../pages/dashboard/admin/Users/CreateAdmin";
+import FacilitiesContant from "../pages/facilities/FacilitiesContant";
 
 export const adminPaths = [
   {
@@ -21,15 +22,11 @@ export const adminPaths = [
       {
         name: "Facilities",
         path: "facilities",
-        element: <CreateFacilities />,
+        element: <FacilitiesContant />,
       },
     ],
   },
-  {
-    name: "Bookings",
-    path: "bookings",
-    element: <Bookings />,
-  },
+
   {
     name: "Users",
     children: [
@@ -44,5 +41,10 @@ export const adminPaths = [
         element: <AllUsers />,
       },
     ],
+  },
+  {
+    name: "Bookings",
+    path: "bookings",
+    element: <Bookings />,
   },
 ];
