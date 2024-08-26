@@ -1,7 +1,9 @@
+import HeaderBanner from "../../utils/HeaderBanner";
+
 const About = () => {
   return (
-    <div>
-      <h2>This is About component</h2>
+    <div className="relative">
+      <HeaderBanner title="About Page" page="About us" />
     </div>
   );
 };

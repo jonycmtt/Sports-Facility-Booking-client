@@ -56,6 +56,26 @@ body {
   overflow: hidden;
 }
 
+.headerBanner {
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)),
+    url("https://dreamsports.dreamstechnologies.com/react/template/static/media/breadcrumb-bg2.764bf72ee919b156bf7d.jpg")
+      no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.style-icon {
+  background: linear-gradient(
+    105.55deg,
+    #085a6c -6.68%,
+    #269089 43.13%,
+    #7abc82 96.15%
+  );
+}
+
 /* slider */
 
 .swiper {
