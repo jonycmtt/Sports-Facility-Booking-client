@@ -1,5 +1,6 @@
 import HeaderBanner from "../../utils/HeaderBanner";
 import AboutImageGallery from "./AboutImageGallery";
+import HistoryAndMilestones from "./HistoryAndMilestones";
 import MissionStatement from "./MissionStatement";
 import TeamSection from "./TeamSection";
 
@@ -12,6 +13,7 @@ const About = () => {
         <MissionStatement />
         <TeamSection />
       </div>
+      <HistoryAndMilestones />
     </div>
   );
 };
