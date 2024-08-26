@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Caterine",
+    "position": "Chief Executive Officer",
+    "image": "https://dreamsports.dreamstechnologies.com/assets/img/pricing-ban.jpg",
+    "category": "Designer",
+    "description": "Caterine leads our company with a creative vision and a strategic mindset, ensuring the highest standards in all our projects."
+  },
+  {
+    "name": "James Carter",
+    "position": "Chief Technology Officer",
+    "image": "https://dreamsports.dreamstechnologies.com/assets/img/profile/avatar-03.jpg",
+    "category": "Developer",
+    "description": "James is responsible for overseeing the technical aspects of our platform, ensuring seamless integration and innovative solutions."
+  },
+  {
+    "name": "Sophia Wilson",
+    "position": "Chief Marketing Officer",
+    "image": "https://dreamsports.dreamstechnologies.com/assets/img/profile/avatar-02.jpg",
+    "category": "Marketing",
+    "description": "Sophia drives our marketing strategies, focusing on brand growth and user engagement to expand our reach globally."
+  },
+  {
+    "name": "Liam Johnson",
+    "position": "Chief Operations Officer",
+    "image": "https://dreamsports.dreamstechnologies.com/assets/img/pricing-ban.jpg",
+    "category": "Operations",
+    "description": "Liam manages our daily operations, ensuring efficiency and excellence in all aspects of our service delivery."
+  }
+]

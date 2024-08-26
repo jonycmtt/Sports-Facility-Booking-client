@@ -1,6 +1,7 @@
 import HeaderBanner from "../../utils/HeaderBanner";
 import AboutImageGallery from "./AboutImageGallery";
 import MissionStatement from "./MissionStatement";
+import TeamSection from "./TeamSection";
 
 const About = () => {
   return (
@@ -9,6 +10,7 @@ const About = () => {
       <div className="max-w-6xl mx-auto ">
         <AboutImageGallery />
         <MissionStatement />
+        <TeamSection />
       </div>
     </div>
   );
