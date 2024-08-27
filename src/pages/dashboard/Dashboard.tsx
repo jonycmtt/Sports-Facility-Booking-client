@@ -1,12 +1,18 @@
 import { Button, Layout } from "antd";
 import Sidebar from "../../components/layout/Sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { logout, selectCurrentUser } from "../../redux/features/authSlice";
 
 const { Content } = Layout;
 
 const Dashboard = () => {
+  const loginUser = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const handleLogout = () => {
-    console.log("logout");
+    dispatch(logout());
+    navigate("/login");
   };
   return (
     <Layout className="h-screen overflow-auto">
@@ -29,8 +35,8 @@ const Dashboard = () => {
             >
               <div className="w-10 rounded-full ">
                 <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  alt={loginUser?.user.name}
+                  src={loginUser?.user.profilePic}
                 />
               </div>
             </div>
@@ -38,6 +44,12 @@ const Dashboard = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] -mt-3 w-52 p-2 shadow"
             >
+              <li>
+                <a className="justify-between">
+                  {loginUser?.user.name}
+                  <span className="badge">{loginUser?.user.role}</span>
+                </a>
+              </li>
               <li>
                 <a className="justify-between">
                   Profile

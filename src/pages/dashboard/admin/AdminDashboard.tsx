@@ -1,13 +1,17 @@
 import { Badge } from "antd";
+import { useAppSelector } from "../../../redux/hook";
+import { selectCurrentUser } from "../../../redux/features/authSlice";
 
 const AdminDashboard = () => {
+  const loginUser = useAppSelector(selectCurrentUser);
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 my-10">
         <div className="bg-[#FFE4DD] col-span-8  p-5 rounded-xl grid grid-cols-1 md:grid-cols-2">
           <div>
             <h2 className="text-2xl font-bold text-[#333]">
-              Welcome back JonyCmt
+              Welcome back{" "}
+              <span className="primary-liner">{loginUser?.user.name}</span>
             </h2>
             <p className="mt-4 text-lg text-gray-600 outfit">
               We're thrilled to have you here again. Dive in and pick up where
@@ -24,15 +28,23 @@ const AdminDashboard = () => {
         <div className="relative col-span-4 text-center flex justify-start items-center flex-col border py-6 gap-3">
           <img
             className="size-24 rounded-full"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            alt=""
+            alt={loginUser?.user.name}
+            src={loginUser?.user.profilePic}
           />
           <div>
-            <h2 className="text-lg font-bold text-[#333]"> Name : JonyCmT</h2>
-            <h3 className="font-semibold text-[#666]">Gmail : abc@gmail.com</h3>
+            <h2 className="text-lg font-bold text-[#333]">
+              {" "}
+              Name : {loginUser?.user.name}
+            </h2>
+            <h3 className="font-semibold text-[#666]">
+              Gmail :{loginUser?.user.email}
+            </h3>
           </div>
           <div className="absolute top-0 right-0">
-            <Badge.Ribbon text="Admin" color="magenta"></Badge.Ribbon>
+            <Badge.Ribbon
+              text={loginUser?.user.role}
+              color="magenta"
+            ></Badge.Ribbon>
           </div>
         </div>
       </div>
