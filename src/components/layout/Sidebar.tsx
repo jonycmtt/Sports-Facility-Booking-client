@@ -4,7 +4,7 @@ import { sidebarItemGenerator } from "../../utils/sidebarItemGenerator";
 import { adminPaths } from "../../routes/admin.routes";
 import { userPaths } from "../../routes/user.routes";
 import { useAppSelector } from "../../redux/hook";
-import { selectCurrentUser } from "../../redux/features/authSlice";
+import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 
 const userRole = {
   ADMIN: "admin",
@@ -13,7 +13,6 @@ const userRole = {
 
 const Sidebar = () => {
   const loginUser = useAppSelector(selectCurrentUser);
-  console.log(loginUser);
 
   const role = loginUser?.user?.role;
   let sidebarItems;

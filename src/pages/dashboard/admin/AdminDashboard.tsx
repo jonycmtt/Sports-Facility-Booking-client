@@ -1,6 +1,6 @@
 import { Badge } from "antd";
 import { useAppSelector } from "../../../redux/hook";
-import { selectCurrentUser } from "../../../redux/features/authSlice";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const AdminDashboard = () => {
   const loginUser = useAppSelector(selectCurrentUser);

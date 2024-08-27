@@ -6,6 +6,7 @@ import { adminPaths } from "./admin.routes";
 import { userPaths } from "./user.routes";
 import { mainPaths } from "./main.route";
 import LandingPages from "../pages/Landing/LandingPages";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,12 +27,20 @@ const router = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute role="admin">
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     children: routesGenerator(adminPaths),
   },
   {
     path: "/user",
-    element: <Dashboard />,
+    element: (
+      <ProtectedRoute role="user">
+        <Dashboard />
+      </ProtectedRoute>
+    ),
     children: routesGenerator(userPaths),
   },
 ]);

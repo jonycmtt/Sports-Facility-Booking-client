@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+// import Cookies from "js-cookie";
 import { Button, Col, Divider } from "antd";
 import MainForm from "../../components/form/MainForm";
 import FormInput from "../../components/form/FormInput";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hook";
-import { useLoginMutation } from "../../redux/features/authApi";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { verifyToken } from "../../utils/verifyToken";
-import { setUser, TUser } from "../../redux/features/authSlice";
 import GoogleLoginAuth from "../../utils/GoogleLogin";
+import { useLoginMutation } from "../../redux/features/auth/authApi";
+import { setUser, TUser } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const defaultValues = {
     email: "jonyu@gmail.com",
@@ -21,6 +22,7 @@ const Login = () => {
   };
 
   const [login] = useLoginMutation();
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Login In...");
 
@@ -30,16 +32,17 @@ const Login = () => {
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
-      const loginUser = verifyToken(res.token) as TUser;
-
-      dispatch(
-        setUser({
-          loginUser,
-          token: res.token,
-        })
-      );
-      toast.success("Login Success", { id: toastId, duration: 1000 });
-      navigate("/");
+      if (res.success) {
+        const loginUser = verifyToken(res.token) as TUser;
+        dispatch(
+          setUser({
+            user: loginUser,
+            token: res.token,
+          })
+        );
+        toast.success("Login Success", { id: toastId, duration: 1000 });
+        // navigate("/");
+      }
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong!", { id: toastId, duration: 1000 });

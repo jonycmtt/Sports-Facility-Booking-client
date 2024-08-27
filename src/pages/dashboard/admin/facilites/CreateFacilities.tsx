@@ -2,18 +2,35 @@ import { Button, Col, Row } from "antd";
 import FormInput from "../../../../components/form/FormInput";
 import MainForm from "../../../../components/form/MainForm";
 import FormTextArea from "../../../../components/form/FormTextArea";
+import { FieldValues, SubmitHandler } from "react-hook-form";
+import { useAddFacilityMutation } from "../../../../redux/features/facilities/facilitiesApi";
+import { toast } from "sonner";
 
-export type TFacilitiesData = {
-  name: string;
-  description: string;
-  pricePerHour: number;
-  location: string;
-  image: string;
-};
+// export type TFacilitiesData = {
+//   name: string;
+//   description: string;
+//   pricePerHour: number;
+//   location: string;
+//   image: string;
+// };
 
 const CreateFacilities = () => {
-  const onSubmit = (data: TFacilitiesData) => {
-    console.log(data);
+  const [addFacility] = useAddFacilityMutation();
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId = toast.loading("Facility Creating...");
+    const dataInfo = {
+      ...data,
+      pricePerHour: Number(data.pricePerHour),
+    };
+
+    try {
+      const result = await addFacility(dataInfo).unwrap();
+      if (result.success) {
+        toast.success("Facility Created", { id: toastId, duration: 1000 });
+      }
+    } catch (error) {
+      toast.error("Something went wrong", { id: toastId, duration: 1000 });
+    }
   };
   return (
     <div>

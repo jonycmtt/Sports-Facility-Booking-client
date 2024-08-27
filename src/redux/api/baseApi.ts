@@ -1,14 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 
-const baseQueryFn = fetchBaseQuery({
+const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3000/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
-
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
+    } else {
+      console.log("not found token");
     }
     return headers;
   },
@@ -16,7 +17,7 @@ const baseQueryFn = fetchBaseQuery({
 
 const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: baseQueryFn,
+  baseQuery,
   endpoints: () => ({}),
 });
 

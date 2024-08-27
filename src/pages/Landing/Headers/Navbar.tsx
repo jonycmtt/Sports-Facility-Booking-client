@@ -1,8 +1,11 @@
 import { LuUsers2 } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
-import { logout, selectCurrentUser } from "../../../redux/features/authSlice";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { Button } from "antd";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../redux/features/auth/authSlice";
 
 const Navbar = () => {
   const selectUser = useAppSelector(selectCurrentUser);
@@ -51,7 +54,7 @@ const Navbar = () => {
           Facilities
         </NavLink>
       </li>
-      {currentUser === "admin" ? (
+      {currentUser === "admin" && (
         <li>
           <NavLink
             to="/admin/dashboard"
@@ -62,7 +65,8 @@ const Navbar = () => {
             Dashboard
           </NavLink>
         </li>
-      ) : (
+      )}
+      {currentUser === "user" && (
         <li>
           <NavLink
             to="/user/dashboard"

@@ -6,10 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { GoogleCircleFilled } from "@ant-design/icons";
 import FormTextArea from "../../components/form/FormTextArea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useSignupMutation } from "../../redux/features/authApi";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { registerValidationSchema } from "../../schemas/registerValidationSchema";
 import { toast } from "sonner";
+import { useSignupMutation } from "../../redux/features/auth/authApi";
 
 const Register = () => {
   const [signupUser] = useSignupMutation();

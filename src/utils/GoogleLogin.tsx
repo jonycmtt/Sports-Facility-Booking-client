@@ -1,16 +1,15 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { toast } from "sonner";
 import { verifyToken } from "./verifyToken";
-import { setUser, TUser } from "../redux/features/authSlice";
 import { useAppDispatch } from "../redux/hook";
 import { useNavigate } from "react-router-dom";
+import { setUser, TUser } from "../redux/features/auth/authSlice";
 
 const GoogleLoginAuth = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const handleSuccess = (response: any) => {
     const userinfo = verifyToken(response.credential) as TUser;
-    console.log(userinfo);
 
     const loginUser = {
       user: {
@@ -24,10 +23,10 @@ const GoogleLoginAuth = () => {
       iat: userinfo.iat,
       exp: userinfo.exp,
     };
-    console.log(loginUser);
+
     dispatch(
       setUser({
-        loginUser,
+        user: loginUser,
         token: response.credential,
       })
     );

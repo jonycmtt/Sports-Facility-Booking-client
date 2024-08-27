@@ -2,7 +2,7 @@ import { Button, Layout } from "antd";
 import Sidebar from "../../components/layout/Sidebar";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { logout, selectCurrentUser } from "../../redux/features/authSlice";
+import { logout, selectCurrentUser } from "../../redux/features/auth/authSlice";
 
 const { Content } = Layout;
 
