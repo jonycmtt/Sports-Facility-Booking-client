@@ -11,7 +11,7 @@ type TInputProps = {
 
 const FormTextArea = ({ name, label, placeholder }: TInputProps) => {
   return (
-    <div className="mb-4">
+    <div className="mb-4 text-left">
       <Controller
         name={name}
         render={({ field, fieldState: { error } }) => (

@@ -10,7 +10,7 @@ type TInputProps = {
 
 const FormInput = ({ type, name, placeholder, label }: TInputProps) => {
   return (
-    <div className="mb-4">
+    <div className="mb-4 text-left">
       <Controller
         name={name}
         render={({ field, fieldState: { error } }) => (
@@ -22,7 +22,9 @@ const FormInput = ({ type, name, placeholder, label }: TInputProps) => {
               id={name}
               placeholder={placeholder}
             />
-            {error && <small className="text-red-600">{error.message}</small>}
+            {error && (
+              <small className="text-red-600 text-left">{error.message}</small>
+            )}
           </Form.Item>
         )}
       />

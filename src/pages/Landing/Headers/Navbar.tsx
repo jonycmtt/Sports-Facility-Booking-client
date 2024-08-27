@@ -1,12 +1,14 @@
 import { LuUsers2 } from "react-icons/lu";
 import { Link, NavLink } from "react-router-dom";
+import { logout, selectCurrentUser } from "../../../redux/features/authSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/hook";
+import { Button } from "antd";
 
 const Navbar = () => {
-  const user = {
-    ADMIN: "admin",
-    USER: "user",
-  };
-  const currentUser = user.ADMIN;
+  const selectUser = useAppSelector(selectCurrentUser);
+  const dispatch = useAppDispatch();
+
+  const currentUser = selectUser?.user.role;
   const items = (
     <>
       <li>
@@ -75,6 +77,10 @@ const Navbar = () => {
     </>
   );
 
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <div className="bg-nature text-white">
       <div className="navbar max-w-7xl mx-auto ">
@@ -115,12 +121,52 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 font-bold">{items}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">
-            <button className="btn btn-sm sm:btn-md text-lg text-[#097e52]">
-              <LuUsers2 />
-              <span>Login/Register</span>
-            </button>
-          </Link>
+          {selectUser?.user ? (
+            <div className="dropdown dropdown-end text-[#333]">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full ">
+                  <img
+                    alt={selectUser?.user.name}
+                    src={selectUser?.user.profilePic}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] -mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <a className="justify-between">
+                    {selectUser?.user.name}
+                    <span className="badge">{selectUser?.user.role}</span>
+                  </a>
+                </li>
+                <li>
+                  <a className="justify-between">
+                    Profile
+                    <span className="badge">New</span>
+                  </a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <Button onClick={handleLogout}>Logout</Button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="btn btn-sm sm:btn-md text-lg text-[#097e52]">
+                <LuUsers2 />
+                <span>Login/Register</span>
+              </button>
+            </Link>
+          )}
         </div>
       </div>
       {/* <Layout>

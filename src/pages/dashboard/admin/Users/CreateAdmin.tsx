@@ -1,6 +1,4 @@
-import { Button, Col, Divider } from "antd";
-import { Link } from "react-router-dom";
-import { GoogleCircleFilled } from "@ant-design/icons";
+import { Button, Col } from "antd";
 import MainForm from "../../../../components/form/MainForm";
 import FormInput from "../../../../components/form/FormInput";
 import FormTextArea from "../../../../components/form/FormTextArea";
