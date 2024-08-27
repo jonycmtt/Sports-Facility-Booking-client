@@ -8,7 +8,7 @@ const Navbar = () => {
   const selectUser = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
 
-  const currentUser = selectUser?.user.role;
+  const currentUser = selectUser?.user?.role;
   const items = (
     <>
       <li>

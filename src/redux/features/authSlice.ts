@@ -5,9 +5,9 @@ export type TUser = {
   user: {
     name: string;
     email: string;
-    phone: string;
+    phone?: string;
     role: string;
-    address: string;
+    address?: string;
     profilePic: string;
   };
   iat: number;
@@ -29,8 +29,9 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      const { user, token } = action.payload;
-      state.user = user;
+      console.log(action.payload);
+      const { loginUser, token } = action.payload;
+      state.user = loginUser;
       state.token = token;
     },
     logout: (state) => {

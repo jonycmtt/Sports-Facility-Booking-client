@@ -3,17 +3,17 @@ import { Button, Col, Divider } from "antd";
 import MainForm from "../../components/form/MainForm";
 import FormInput from "../../components/form/FormInput";
 import { Link, useNavigate } from "react-router-dom";
-import { GoogleCircleFilled } from "@ant-design/icons";
 import { useAppDispatch } from "../../redux/hook";
 import { useLoginMutation } from "../../redux/features/authApi";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { verifyToken } from "../../utils/verifyToken";
 import { setUser, TUser } from "../../redux/features/authSlice";
+import GoogleLoginAuth from "../../utils/GoogleLogin";
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const defaultValues = {
     email: "jonyu@gmail.com",
@@ -30,14 +30,16 @@ const Login = () => {
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
-      const user = verifyToken(res.token) as TUser;
+      const loginUser = verifyToken(res.token) as TUser;
+
       dispatch(
         setUser({
-          user,
+          loginUser,
           token: res.token,
         })
       );
-      toast.success("Success Login", { id: toastId, duration: 1000 });
+      toast.success("Login Success", { id: toastId, duration: 1000 });
+      navigate("/");
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong!", { id: toastId, duration: 1000 });
@@ -76,10 +78,7 @@ const Login = () => {
               </Link>
             </span>
             <Divider>Or</Divider>
-            <button className="btn border-[#ccc] btn-outline btn-neutral btn-block btn-md">
-              <GoogleCircleFilled className="text-xl" />
-              Login with Google
-            </button>
+            <GoogleLoginAuth />
           </div>
         </div>
       </Col>
