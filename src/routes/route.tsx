@@ -4,9 +4,14 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import { routesGenerator } from "../utils/routesGenerator";
 import { adminPaths } from "./admin.routes";
 import { userPaths } from "./user.routes";
-import { mainPaths } from "./main.route";
 import LandingPages from "../pages/Landing/LandingPages";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
+import About from "../pages/about/About";
+import Contact from "../pages/Contact/Contact";
+import FacilitiesContainer from "../pages/facilities/FacilitiesContainer";
+import FeatureDetails from "../pages/Landing/features/FeatureDetails";
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +22,31 @@ const router = createBrowserRouter([
         path: "/",
         element: <LandingPages />,
       },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "facilities",
+        element: <FacilitiesContainer />,
+      },
+      {
+        path: "facility-details/:id",
+        element: <FeatureDetails />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
     ],
-  },
-  {
-    path: "/",
-    element: <App />,
-    children: routesGenerator(mainPaths),
   },
 
   {

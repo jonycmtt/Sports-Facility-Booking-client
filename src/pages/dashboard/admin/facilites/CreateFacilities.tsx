@@ -29,6 +29,7 @@ const CreateFacilities = () => {
         toast.success("Facility Created", { id: toastId, duration: 1000 });
       }
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong", { id: toastId, duration: 1000 });
     }
   };

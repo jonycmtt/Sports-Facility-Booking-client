@@ -2,7 +2,8 @@ import About from "../pages/about/About";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import Contact from "../pages/Contact/Contact";
-import FacilitiesContant from "../pages/facilities/FacilitiesContant";
+import FacilitiesContainer from "../pages/facilities/FacilitiesContainer";
+import FeatureDetails from "../pages/Landing/features/FeatureDetails";
 // import LandingPages from "../pages/Landing/LandingPages";
 
 export const mainPaths = [
@@ -19,7 +20,12 @@ export const mainPaths = [
   {
     name: "Facility ",
     path: "facilities",
-    element: <FacilitiesContant />,
+    element: <FacilitiesContainer />,
+  },
+  {
+    name: "Facility Details ",
+    path: "/facilities/:id",
+    element: <FeatureDetails />,
   },
   {
     name: "Login",
