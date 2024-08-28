@@ -1,7 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { MdDeleteOutline, MdOutlineRemoveRedEye } from "react-icons/md";
-import { useGetFacilitiesQuery } from "../../redux/features/facilities/facilitiesApi";
-import { Button, Modal, Table, TableColumnsType, TableProps } from "antd";
+import {
+  useDeleteFacilitiesMutation,
+  useGetFacilitiesQuery,
+} from "../../redux/features/facilities/facilitiesApi";
+import {
+  Button,
+  message,
+  Modal,
+  Popconfirm,
+  PopconfirmProps,
+  Table,
+  TableColumnsType,
+  TableProps,
+} from "antd";
 import { LuClipboardEdit } from "react-icons/lu";
 // import { toast } from "sonner";
 import { useState } from "react";
@@ -13,6 +25,7 @@ export type TFacilitiesData = {
   description: string;
   image: string;
   _id: string;
+  isDeleted: boolean;
 };
 interface DataType {
   key: React.Key;
@@ -21,28 +34,34 @@ interface DataType {
   pricePerHour: number;
   description: string;
   image: string;
+  isDeleted: boolean;
 }
 
 const FacilitiesContant = () => {
   const { data: sportsFacility, isFetching } = useGetFacilitiesQuery(undefined);
+  const [deleteFacility] = useDeleteFacilitiesMutation({});
 
-  const tableData = sportsFacility?.data?.map(
-    ({
-      _id,
-      name,
-      description,
-      image,
-      pricePerHour,
-      location,
-    }: TFacilitiesData) => ({
-      key: _id,
-      name,
-      description,
-      image,
-      pricePerHour,
-      location,
-    })
-  );
+  const tableData = sportsFacility?.data
+    ?.filter((facility: TFacilitiesData) => !facility.isDeleted)
+    .map(
+      ({
+        _id,
+        name,
+        description,
+        image,
+        pricePerHour,
+        location,
+        isDeleted,
+      }: TFacilitiesData) => ({
+        key: _id,
+        name,
+        description,
+        image,
+        pricePerHour,
+        location,
+        isDeleted,
+      })
+    );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFacility, setSelectedFacility] = useState<DataType | null>(
@@ -62,7 +81,22 @@ const FacilitiesContant = () => {
     setIsModalOpen(false);
   };
 
-  console.log(selectedFacility);
+  // delete
+
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteFacility(id).unwrap();
+      message.success("Facility deleted successfully");
+    } catch (error) {
+      console.log(error);
+      message.error("Failed to delete facility");
+    }
+  };
+
+  const cancel: PopconfirmProps["onCancel"] = (e) => {
+    console.log(e);
+    message.error("Click on No");
+  };
 
   const columns: TableColumnsType<DataType> = [
     {
@@ -103,9 +137,18 @@ const FacilitiesContant = () => {
             <Button className="border-green-700  p-2">
               <LuClipboardEdit />
             </Button>
-            <Button className="border-red-700 text-lg p-2">
-              <MdDeleteOutline />
-            </Button>
+            <Popconfirm
+              title="Delete the task"
+              description="Are you sure to delete this task?"
+              onConfirm={() => handleDelete(record.key as string)}
+              onCancel={cancel}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button className="border-red-700 text-lg p-2">
+                <MdDeleteOutline />
+              </Button>
+            </Popconfirm>
           </div>
         );
       },

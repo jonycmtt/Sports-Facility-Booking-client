@@ -13,7 +13,17 @@ const facilitiesApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    deleteFacilities: builder.mutation({
+      query: (id) => ({
+        url: `/facility/${id}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useAddFacilityMutation, useGetFacilitiesQuery } = facilitiesApi;
+export const {
+  useAddFacilityMutation,
+  useGetFacilitiesQuery,
+  useDeleteFacilitiesMutation,
+} = facilitiesApi;
