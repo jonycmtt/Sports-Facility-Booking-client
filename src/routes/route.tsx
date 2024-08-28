@@ -12,6 +12,7 @@ import FacilitiesContainer from "../pages/facilities/FacilitiesContainer";
 import FeatureDetails from "../pages/Landing/features/FeatureDetails";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import BookingContainer from "../pages/booking/BookingContainer";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "facility-details/:id",
         element: <FeatureDetails />,
+      },
+      {
+        path: "booking-info/:id",
+        element: <BookingContainer />,
       },
       {
         path: "login",

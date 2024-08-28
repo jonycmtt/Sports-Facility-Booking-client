@@ -1,9 +1,8 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetFacilitiesQuery } from "../../../redux/features/facilities/facilitiesApi";
 import HeaderBanner from "../../../utils/HeaderBanner";
 import { FaRegCalendarCheck } from "react-icons/fa6";
 import ContactInfo from "../../about/ContactInfo";
-import Testimonials from "../Testimonials/Testimonials";
 
 const FeatureDetails = () => {
   const { id } = useParams();
@@ -14,7 +13,8 @@ const FeatureDetails = () => {
   }
   const facilityData = singleFacility?.data;
 
-  const { description, image, location, name, pricePerHour } = facilityData;
+  const { description, image, location, name, pricePerHour, _id } =
+    facilityData;
 
   return (
     <>
@@ -36,21 +36,23 @@ const FeatureDetails = () => {
             <h3 className="my-2">
               <span className="font-semibold">Price Per Hour :</span>
               <span className="text-2xl text-[#097E52]">
-                {" "}
                 ${pricePerHour}/hr
               </span>
             </h3>
             <p>{description}</p>
             <div className="my-6">
-              <button className="btn btn-neutral">
-                <FaRegCalendarCheck className="text-xl" /> Book Now
-              </button>
+              <Link to={`/booking-info/${_id}`}>
+                <button className="btn btn-neutral">
+                  <FaRegCalendarCheck className="text-xl" /> Book Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
 
-        <div className="my-16"></div>
-        <ContactInfo />
+        <div className="my-16">
+          <ContactInfo />
+        </div>
       </div>
     </>
   );

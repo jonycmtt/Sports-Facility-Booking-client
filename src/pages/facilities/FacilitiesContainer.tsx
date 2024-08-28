@@ -34,7 +34,7 @@ const FacilitiesContainer = () => {
     <div>
       <HeaderBanner title={"Sport Facilities"} page={"facilities"} />
       <div className="max-w-6xl mx-auto my-12">
-        <div className=" flex justify-between items-center border rounded-md shadow-sm bg-white p-4 px-8">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 items-center  border rounded-md shadow-sm bg-white p-4 px-8">
           <div>
             <strong className="text-[#333] font-normal">
               <span className="text-[#097E52] font-semibold">
@@ -57,14 +57,14 @@ const FacilitiesContainer = () => {
               <input
                 type="text"
                 name="minPrice"
-                placeholder="Price"
-                className="input input-sm input-bordered w-20"
+                placeholder="Min Price"
+                className="input text-xs input-sm input-bordered w-20"
               />
               <input
                 type="text"
                 name="maxPrice"
-                placeholder="Price"
-                className="input input-sm input-bordered w-20"
+                placeholder="Max Price"
+                className="input input-sm text-xs input-bordered w-20"
               />
               <button type="submit" className="btn btn-neutral btn-sm">
                 Filter
