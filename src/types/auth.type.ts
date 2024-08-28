@@ -5,4 +5,5 @@ export type TRegisterUser = {
   phone: string;
   address: string;
   profilePic: string;
+  _id: string;
 };

@@ -4,6 +4,7 @@ import { useGetFacilitiesQuery } from "../../../redux/features/facilities/facili
 import SingleFactureFacilities, {
   TFacilitiesDataType,
 } from "./SingleFactureFacilities";
+import { Link } from "react-router-dom";
 
 const FeaturesFacilities = () => {
   const { data: facilities, isLoading } = useGetFacilitiesQuery(undefined);
@@ -24,10 +25,13 @@ const FeaturesFacilities = () => {
         ))}
       </div>
       <div className="text-center">
-        <button className="btn btn-neutral text-white">
-          View All Facilities
-          <MdOutlineArrowCircleRight className="text-xl" />
-        </button>
+        <Link to={"/facilities"}>
+          {" "}
+          <button className="btn btn-neutral text-white">
+            View All Facilities
+            <MdOutlineArrowCircleRight className="text-xl" />
+          </button>
+        </Link>
       </div>
     </div>
   );

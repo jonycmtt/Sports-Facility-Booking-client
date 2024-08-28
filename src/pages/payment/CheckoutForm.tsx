@@ -3,8 +3,11 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { Modal } from "antd";
 import successLogo from "../../assets/images/success.png";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const CheckoutForm = ({ price }: { price: number }) => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
@@ -45,6 +48,11 @@ const CheckoutForm = ({ price }: { price: number }) => {
 
     setLoading(false);
   };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    navigate("/facilities");
+    window.location.reload();
+  };
 
   return (
     <>
@@ -61,13 +69,18 @@ const CheckoutForm = ({ price }: { price: number }) => {
         {error && <div>{error}</div>}
       </form>
 
-      <Modal title="" open={isModalOpen} footer={false}>
+      <Modal title="" open={isModalOpen} onCancel={handleCancel} footer={false}>
         <div className="flex justify-center items-center flex-col gap-y-3">
           <img className="size-16" src={successLogo} alt="" />
           <h2 className="text-xl font-semibold text-center">Payment Success</h2>
           <h2 className="text-2xl font-bold">
             Pay : <span>${price}.00</span>
           </h2>
+          <img
+            className="w-full"
+            src="https://img.freepik.com/free-vector/credit-score-flat-composition-with-chat-bubbles-envelopes-application-screens-black-woman-with-credit-card-vector-illustration_1284-83826.jpg?t=st=1724877507~exp=1724881107~hmac=3c1648e569c83ac210a8104c73195d7876a6c8afce36d0f181fc143f93eac0b3&w=740"
+            alt=""
+          />
         </div>
       </Modal>
     </>

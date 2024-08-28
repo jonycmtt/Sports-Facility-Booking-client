@@ -2,13 +2,23 @@ import baseApi from "../../api/baseApi";
 
 const bookingApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    getBooking: builder.query({
+      query: (id) => {
+        if (id) {
+          return { url: `/bookings/${id}`, method: "GET" };
+        }
+        return { url: "/bookings", method: "GET" };
+      },
+      providesTags: ["facility"],
+    }),
+
     addBooking: builder.mutation({
       query: (data) => {
         return { url: "/bookings", method: "POST", body: data };
       },
-      //   invalidatesTags: ["facility"],
+      invalidatesTags: ["facility"],
     }),
   }),
 });
 
-export const { useAddBookingMutation } = bookingApi;
+export const { useAddBookingMutation, useGetBookingQuery } = bookingApi;

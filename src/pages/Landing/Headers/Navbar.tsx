@@ -1,17 +1,32 @@
 import { LuUsers2 } from "react-icons/lu";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { Button } from "antd";
 import {
   logout,
   selectCurrentUser,
 } from "../../../redux/features/auth/authSlice";
+import { IoCartOutline } from "react-icons/io5";
+import { useGetBookingQuery } from "../../../redux/features/booking/bookingApi";
 
 const Navbar = () => {
   const selectUser = useAppSelector(selectCurrentUser);
+  const currentBookingUser = selectUser?.user._id;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { data: bookingData, isLoading } =
+    useGetBookingQuery(currentBookingUser);
 
+  console.log(bookingData);
+
+  if (isLoading) {
+    return <span>...</span>;
+  }
   const currentUser = selectUser?.user?.role;
+
+  const handleUserDashboard = () => {
+    navigate("/user/dashboard");
+  };
   const items = (
     <>
       <li>
@@ -66,7 +81,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
-      {currentUser === "user" && (
+      {/* {currentUser === "user" && (
         <li>
           <NavLink
             to="/user/dashboard"
@@ -77,7 +92,7 @@ const Navbar = () => {
             Dashboard
           </NavLink>
         </li>
-      )}
+      )} */}
     </>
   );
 
@@ -124,7 +139,15 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-bold">{items}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-6">
+          {currentUser === "user" && (
+            <span className="relative" onClick={handleUserDashboard}>
+              <IoCartOutline className="text-3xl cursor-pointer " />
+              <span className="font-semibold absolute -top-3 size-5 bg-white text-[#333] rounded-full text-center text-sm inline-flex justify-center items-center  -right-3">
+                {bookingData?.data.length}
+              </span>
+            </span>
+          )}
           {selectUser?.user ? (
             <div className="dropdown dropdown-end text-[#333]">
               <div
