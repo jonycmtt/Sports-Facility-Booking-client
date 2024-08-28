@@ -3,9 +3,12 @@ import { MdDeleteOutline, MdOutlineRemoveRedEye } from "react-icons/md";
 import {
   useDeleteFacilitiesMutation,
   useGetFacilitiesQuery,
+  useUpdateFacilitiesMutation,
 } from "../../redux/features/facilities/facilitiesApi";
 import {
   Button,
+  Form,
+  Input,
   message,
   Modal,
   Popconfirm,
@@ -40,6 +43,7 @@ interface DataType {
 const FacilitiesContant = () => {
   const { data: sportsFacility, isFetching } = useGetFacilitiesQuery(undefined);
   const [deleteFacility] = useDeleteFacilitiesMutation({});
+  const [updateFacility] = useUpdateFacilitiesMutation();
 
   const tableData = sportsFacility?.data
     ?.filter((facility: TFacilitiesData) => !facility.isDeleted)
@@ -63,22 +67,24 @@ const FacilitiesContant = () => {
       })
     );
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isViewModalOpen, setIsViewModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedFacility, setSelectedFacility] = useState<DataType | null>(
     null
   );
 
-  const showModal = (facility: any) => {
-    setIsModalOpen(true);
+  // show view modal
+  const showViewModal = (facility: any) => {
+    setIsViewModalOpen(true);
     setSelectedFacility(facility);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+  // const handleOk = () => {
+  //   setIsViewModalOpen(false);
+  // };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
+  const handleViewCancel = () => {
+    setIsViewModalOpen(false);
   };
 
   // delete
@@ -96,6 +102,46 @@ const FacilitiesContant = () => {
   const cancel: PopconfirmProps["onCancel"] = (e) => {
     console.log(e);
     message.error("Click on No");
+  };
+
+  // update modal
+  const [form] = Form.useForm();
+  const showEditModal = (facility: DataType | null = null) => {
+    setIsEditModalOpen(true);
+    console.log(facility);
+    setSelectedFacility(facility);
+
+    if (facility) {
+      form.setFieldsValue({
+        name: facility.name,
+        location: facility.location,
+        pricePerHour: facility.pricePerHour,
+        description: facility.description,
+        image: facility.image,
+      });
+    } else {
+      form.resetFields();
+    }
+  };
+
+  const handleEditCancel = () => {
+    setIsEditModalOpen(false);
+  };
+
+  const onFinish = async (values: DataType) => {
+    if (selectedFacility) {
+      try {
+        await updateFacility({
+          id: selectedFacility.key as string,
+          data: { ...values },
+        }).unwrap();
+        message.success("Facility updated successfully");
+        setIsEditModalOpen(false);
+      } catch (error) {
+        console.log(error);
+        message.error("Failed to update facility");
+      }
+    }
   };
 
   const columns: TableColumnsType<DataType> = [
@@ -129,17 +175,22 @@ const FacilitiesContant = () => {
         return (
           <div className="flex items-center gap-2 ">
             <Button
-              onClick={() => showModal(record)}
+              onClick={() => showViewModal(record)}
               className="border-blue-700  p-2"
             >
               <MdOutlineRemoveRedEye />
             </Button>
-            <Button className="border-green-700  p-2">
+            {/* update */}
+            <Button
+              onClick={() => showEditModal(record)}
+              className="border-green-700  p-2"
+            >
               <LuClipboardEdit />
             </Button>
+            {/* delete */}
             <Popconfirm
               title="Delete the task"
-              description="Are you sure to delete this task?"
+              description="Are you sure to delete this Facility?"
               onConfirm={() => handleDelete(record.key as string)}
               onCancel={cancel}
               okText="Yes"
@@ -176,9 +227,8 @@ const FacilitiesContant = () => {
         showSorterTooltip={{ target: "sorter-icon" }}
       />
       <Modal
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        open={isViewModalOpen}
+        onCancel={handleViewCancel}
         footer={null}
         centered
       >
@@ -204,6 +254,69 @@ const FacilitiesContant = () => {
               <strong>Description:</strong> {selectedFacility.description}
             </p>
           </>
+        )}
+      </Modal>
+      {/* Edit Modal */}
+      <Modal
+        title="Edit Facility"
+        open={isEditModalOpen}
+        onCancel={handleEditCancel}
+        footer={[
+          <Button key="cancel" onClick={handleEditCancel}>
+            Cancel
+          </Button>,
+          <Button key="submit" type="primary" onClick={() => form.submit()}>
+            Save
+          </Button>,
+        ]}
+        centered
+      >
+        {selectedFacility && (
+          <Form form={form} onFinish={onFinish} layout="vertical">
+            <Form.Item
+              label="Name"
+              name="name"
+              rules={[{ required: true, message: "Please input the name!" }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Location"
+              name="location"
+              rules={[
+                { required: true, message: "Please input the location!" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Price Per Hour"
+              name="pricePerHour"
+              rules={[
+                { required: true, message: "Please input the price per hour!" },
+              ]}
+            >
+              <Input type="number" />
+            </Form.Item>
+            <Form.Item
+              label="Description"
+              name="description"
+              rules={[
+                { required: true, message: "Please input the description!" },
+              ]}
+            >
+              <Input.TextArea />
+            </Form.Item>
+            <Form.Item
+              label="Image URL"
+              name="image"
+              rules={[
+                { required: true, message: "Please input the image URL!" },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Form>
         )}
       </Modal>
     </div>
