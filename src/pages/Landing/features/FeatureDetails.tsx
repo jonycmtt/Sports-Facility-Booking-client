@@ -3,8 +3,11 @@ import { useGetFacilitiesQuery } from "../../../redux/features/facilities/facili
 import HeaderBanner from "../../../utils/HeaderBanner";
 import { FaRegCalendarCheck } from "react-icons/fa6";
 import ContactInfo from "../../about/ContactInfo";
+import { useAppSelector } from "../../../redux/hook";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 
 const FeatureDetails = () => {
+  const currentLoginUser = useAppSelector(selectCurrentUser);
   const { id } = useParams();
   const { data: singleFacility, isLoading } = useGetFacilitiesQuery(id);
   console.log(singleFacility?.data);
@@ -41,11 +44,18 @@ const FeatureDetails = () => {
             </h3>
             <p>{description}</p>
             <div className="my-6">
-              <Link to={`/booking-info/${_id}`}>
-                <button className="btn btn-neutral">
-                  <FaRegCalendarCheck className="text-xl" /> Book Now
+              {currentLoginUser?.user.role === "admin" ? (
+                <button className="btn  disabled:text-[#6b7385]" disabled>
+                  <FaRegCalendarCheck className="text-xl" /> Facility booking is
+                  restricted for admin users
                 </button>
-              </Link>
+              ) : (
+                <Link to={`/booking-info/${_id}`}>
+                  <button className="btn btn-neutral">
+                    <FaRegCalendarCheck className="text-xl" /> Book Now
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

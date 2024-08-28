@@ -41,7 +41,11 @@ const router = createBrowserRouter([
       },
       {
         path: "booking-info/:id",
-        element: <BookingContainer />,
+        element: (
+          <ProtectedRoute role="user">
+            <BookingContainer />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "login",
