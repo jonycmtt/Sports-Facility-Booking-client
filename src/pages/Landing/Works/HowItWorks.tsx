@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 import SectionHeading from "../../../utils/SectionHeading";
 
 const HowItWorks = () => {
   return (
-    <div className="max-w-6xl mx-auto my-20">
+    <div className="max-w-6xl mx-auto my-20 px-4 xl:px-0">
       <SectionHeading
         title={"How It "}
         span={"Works"}
@@ -26,9 +27,11 @@ const HowItWorks = () => {
               Quick and Easy Registration: Get started on our software platform
               with a simple account creation process.
             </p>
-            <button className="btn btn-outline group-hover:bg-neutral group-hover:text-white border-[#ccc] btn-neutral btn-block">
-              Register Now
-            </button>
+            <Link to={"/register"}>
+              <button className="btn btn-outline group-hover:bg-neutral group-hover:text-white border-[#ccc] btn-neutral btn-block">
+                Register Now
+              </button>
+            </Link>
           </div>
         </div>
         <div className="card card-bordered border-2 border-[#eee] bg-white group transition-all py-4">
@@ -47,9 +50,12 @@ const HowItWorks = () => {
               Book Badminton coaches and venues for expert guidance and premium
               facilities.
             </p>
-            <button className="btn btn-outline group-hover:bg-neutral group-hover:text-white border-[#ccc] btn-neutral btn-block">
-              Go to Facilities
-            </button>
+
+            <Link to={"/facilities"}>
+              <button className="btn btn-outline group-hover:bg-neutral group-hover:text-white border-[#ccc] btn-neutral btn-block">
+                Go to Facilities
+              </button>
+            </Link>
           </div>
         </div>
         <div className="card card-bordered border-2 border-[#eee] bg-white group transition-all py-4">
@@ -69,7 +75,7 @@ const HowItWorks = () => {
               user-friendly platform.
             </p>
             <button className="btn btn-outline border-[#ccc] group-hover:bg-neutral group-hover:text-white btn-neutral btn-block">
-              Register Now
+              Booking Now
             </button>
           </div>
         </div>
