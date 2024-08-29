@@ -3,7 +3,7 @@ import { MdOutlineArrowCircleRight } from "react-icons/md";
 
 const SiteBanner = () => {
   return (
-    <div className="siteBanner py-16 text-white text-center space-y-4 relative overflow-hidden">
+    <div className="siteBanner py-16 text-white text-center space-y-4 relative overflow-hidden px-4 xl:px-0 ">
       <h2 className="text-4xl font-semibold ">
         Convenient & Flexible Scheduling
       </h2>
@@ -20,7 +20,7 @@ const SiteBanner = () => {
           View Facilities <HiViewGrid className="text-xl" />
         </button>
       </div>
-      <div className=" absolute -bottom-5 -right-5">
+      <div className=" absolute -bottom-5 -right-5 -z-10 md:z-10">
         <div className="relative">
           <img
             src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/bg/cock-shape.png"

@@ -13,7 +13,7 @@ const FeaturesFacilities = () => {
     return <span>loading...</span>;
   }
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto px-4 xl:px-0">
       <SectionHeading
         title="Featured "
         span="Facilities"

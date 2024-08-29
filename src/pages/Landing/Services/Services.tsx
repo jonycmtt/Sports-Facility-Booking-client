@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SectionHeading from "../../../utils/SectionHeading";
-import SingleService, { TServiceItem } from "./singleService";
+import SingleService, { TServiceItem } from "./SingleService";
 
 const Services = () => {
   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ const Services = () => {
   }, []);
   console.log(data);
   return (
-    <div className="my-20 max-w-6xl mx-auto">
+    <div className="my-20 max-w-6xl mx-auto px-4 xl:px-0">
       <SectionHeading
         title="Explore Our"
         span="Services"

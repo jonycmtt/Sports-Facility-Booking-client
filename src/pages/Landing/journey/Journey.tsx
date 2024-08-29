@@ -5,8 +5,8 @@ import bgBeforeImage from "../../../assets/images/Untitled.png";
 
 const Journey = () => {
   return (
-    <div className="relative">
-      <div className=" max-w-6xl mx-auto py-28 pb-32 grid grid-cols-1 md:grid-cols-2 gap-20">
+    <div className="relative px-4 xl:px-0">
+      <div className=" max-w-6xl mx-auto py-28 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-20">
         <div>
           <h2 className="text-4xl font-bold text-[#333]">
             Start Your Journey With{" "}
@@ -27,7 +27,7 @@ const Journey = () => {
             <h2 className="font-semibold text-[#333]">
               Stay Ahead With Our Innovative Approach:
             </h2>
-            <div className="flex items-start justify-between my-6 mb-8">
+            <div className="flex items-start flex-col sm:flex-row justify-between my-6 mb-8">
               <ul className="space-y-3">
                 <li className="flex items-center gap-2">
                   <FaCircleCheck className="text-[#333] text-xl" />

@@ -3,7 +3,7 @@ import SingleTestimonials from "./SingleTestimonials";
 
 const Testimonials = () => {
   return (
-    <div className="py-20 bg-[#f9f9f6]">
+    <div className="py-20 bg-[#f9f9f6] px-4 xl:px-0 hidden md:block">
       <div className="max-w-6xl mx-auto">
         <SectionHeading
           title="Our  "

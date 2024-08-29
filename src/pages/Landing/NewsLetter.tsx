@@ -2,14 +2,15 @@ import { FaRegEnvelope } from "react-icons/fa6";
 
 const NewsLetter = () => {
   return (
-    <div className="news-letter max-w-6xl mx-auto my-20 grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
-      <div className="col-span-5">
+    <div className="news-letter max-w-6xl mx-auto my-20 grid grid-cols-1 md:grid-cols-12 gap-16 items-center px-4 xl:px-0">
+      <div className="col-span-12 md:col-span-5">
         <img
+          className="w-full"
           src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/subscribe-bg.jpg"
           alt=""
         />
       </div>
-      <div className="col-span-7 text-white space-y-6">
+      <div className=" col-span-12 md:col-span-7 text-white space-y-6 pb-12">
         <img
           src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/icons/subscribe.svg"
           alt=""
