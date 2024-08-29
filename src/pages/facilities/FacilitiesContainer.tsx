@@ -79,7 +79,7 @@ const FacilitiesContainer = () => {
           <div>
             <strong className="text-[#333] font-normal">
               <span className="text-[#097E52] font-semibold">
-                {filterFacilitiesData.length}
+                {filterFacilitiesData?.length}
               </span>{" "}
               facilities are listed
             </strong>
