@@ -21,7 +21,6 @@ body {
 
 .hero-section {
   width: 100%;
-  height: 100vh;
   background: url("https://dreamsports.dreamstechnologies.com/react/template/static/media/banner.7fc0c87ab96535d6ee9a.jpg")
     no-repeat;
   background-size: cover;
