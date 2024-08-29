@@ -20,7 +20,7 @@ const FeaturesFacilities = () => {
         dec="Advanced sports venues offer the latest facilities, dynamic and unique environments for enhanced badminton performance."
       />
       <div className="grid my-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {facilities?.data?.slice(0, 3).map((item: TFacilitiesDataType) => (
+        {facilities?.data?.data.slice(0, 3).map((item: TFacilitiesDataType) => (
           <SingleFactureFacilities button="" item={item} />
         ))}
       </div>

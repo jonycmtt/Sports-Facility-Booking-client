@@ -45,7 +45,7 @@ const FacilitiesContant = () => {
   const [deleteFacility] = useDeleteFacilitiesMutation({});
   const [updateFacility] = useUpdateFacilitiesMutation();
 
-  const tableData = sportsFacility?.data
+  const tableData = sportsFacility?.data?.data
     ?.filter((facility: TFacilitiesData) => !facility.isDeleted)
     .map(
       ({

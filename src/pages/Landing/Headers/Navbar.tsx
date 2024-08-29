@@ -81,7 +81,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
-      {/* {currentUser === "user" && (
+      {currentUser === "user" && (
         <li>
           <NavLink
             to="/user/dashboard"
@@ -92,7 +92,7 @@ const Navbar = () => {
             Dashboard
           </NavLink>
         </li>
-      )} */}
+      )}
     </>
   );
 
