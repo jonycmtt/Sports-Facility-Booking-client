@@ -9,7 +9,7 @@ import { TbWorld } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <div className="pt-16 bg-[#0a1a38] text-white">
+    <div className="pt-16 bg-[#0a1a38] text-white px-4 xl:px-0">
       <div className="text-center">
         <h1 className="text-3xl font-bold ">
           We Welcome Your Passion And Expertise
@@ -23,7 +23,7 @@ const Footer = () => {
         </button>
       </div>
 
-      <div className="max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:col-span-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-12 mx-auto py-8 border-t border-[#1d3563] ">
+      <div className="max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:col-span-4 lg:grid-cols-4 xl:grid-cols-5 gap-6 mt-12 mx-auto py-8 border-t border-[#1d3563] px-4 xl:px-0">
         <div>
           <h2 className="text-xl font-bold">Contact us</h2>
           <div className="mt-4">
@@ -147,7 +147,7 @@ const Footer = () => {
         </div>
       </div>
       {/* footer bottom */}
-      <div className="flex items-center justify-between py-4 px-10 border-[#1d3563] border-t">
+      <div className="flex flex-col md:flex-row items-center justify-between py-4 px-10 border-[#1d3563] border-t">
         <p>© 2024DreamSports - All rights reserved.</p>
         <div>
           <Select
