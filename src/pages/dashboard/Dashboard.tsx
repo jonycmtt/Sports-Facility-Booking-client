@@ -18,7 +18,7 @@ const Dashboard = () => {
     <Layout className="h-screen overflow-auto">
       <Sidebar />
       <Layout>
-        <div className="flex py-2 bg-[#222] justify-between items-center px-6 bg-">
+        <div className="sticky top-0 left-0 z-50 flex py-2 bg-[#222] justify-between items-center px-6 bg-">
           <div className="text-white">
             <div>
               <h2 className="text-lg font-bold">Dashboard</h2>

@@ -9,7 +9,7 @@ const ContactForm = () => {
     console.log(data);
   };
   return (
-    <Row className="my-12 max-w-6xl mx-auto">
+    <Row className="my-12 max-w-6xl mx-auto ">
       <Col span={24}>
         <MainForm onSubmit={onSubmit}>
           <Row gutter={20}>

@@ -11,7 +11,7 @@ const About = () => {
   return (
     <div>
       <HeaderBanner title="About Page" page="About us" />
-      <div className="max-w-6xl mx-auto ">
+      <div className="max-w-6xl mx-auto px-4 xl:px-0">
         <AboutImageGallery />
         <MissionStatement />
         <TeamSection />

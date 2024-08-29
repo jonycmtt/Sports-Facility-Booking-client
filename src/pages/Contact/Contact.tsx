@@ -12,7 +12,7 @@ const Contact = () => {
       <div className="mb-12 max-w-6xl mx-auto">
         <GoogleMap />
       </div>
-      <div className="bg-[#f9f9f6]  py-1">
+      <div className="bg-[#f9f9f6]  py-1 px-4 xl:px-0">
         <h2 className="text-3xl mt-16 font-bold text-[#333] text-center">
           Reach out to us and let's smash your inquiries
         </h2>

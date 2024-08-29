@@ -44,7 +44,15 @@ const CreateAdmin = () => {
   };
   return (
     <div className="flex justify-center items-center">
-      <Col span={12} className="bg-white p-6 py-3 shadow rounded-lg">
+      <Col
+        span={12}
+        xs={{ span: 24 }}
+        sm={{ span: 20 }}
+        md={{ span: 14 }}
+        lg={{ span: 10 }}
+        xl={{ span: 12 }}
+        className="bg-white p-6 py-3 shadow rounded-lg"
+      >
         <h2 className="text-2xl font-bold text-[#333] text-center ">
           Create Admin
         </h2>

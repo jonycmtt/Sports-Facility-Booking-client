@@ -4,8 +4,8 @@ import SectionHeading from "../../utils/SectionHeading";
 
 const ContactInfo = () => {
   return (
-    <section className="bg-white py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-0">
+    <section className="bg-white py-16 px-4 xl:px-0">
+      <div className="max-w-6xl mx-auto ">
         <SectionHeading title="Contact " span=" Use" dec="" />
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Contact Method: Email */}

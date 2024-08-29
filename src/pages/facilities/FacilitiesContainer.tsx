@@ -74,7 +74,7 @@ const FacilitiesContainer = () => {
   return (
     <div>
       <HeaderBanner title={"Sport Facilities"} page={"facilities"} />
-      <div className="max-w-6xl mx-auto my-12">
+      <div className="max-w-6xl mx-auto my-12 px-4 xl:px-0">
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 items-center  border rounded-md shadow-sm bg-white p-4 px-8">
           <div>
             <strong className="text-[#333] font-normal">

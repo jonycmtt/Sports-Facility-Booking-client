@@ -51,8 +51,16 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex bg-[#f9f9f6] justify-center items-center h-full py-12">
-      <Col span={7} className="bg-white p-6 shadow rounded-lg">
+    <div className="flex bg-[#f9f9f6] justify-center items-center h-full py-12 px-4 xl:px-0">
+      <Col
+        span={7}
+        xs={{ span: 24 }}
+        sm={{ span: 20 }}
+        md={{ span: 14 }}
+        lg={{ span: 10 }}
+        xl={{ span: 7 }}
+        className="bg-white p-6 shadow rounded-lg"
+      >
         <h2 className="text-2xl font-bold text-[#333] text-center ">Login</h2>
 
         <div className="my-6 text-center">

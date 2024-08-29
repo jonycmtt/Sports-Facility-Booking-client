@@ -85,27 +85,29 @@ const BookingContainer = () => {
   return (
     <div>
       <HeaderBanner title={"Booking Page"} page={"booking-info"} />
-      <div className="max-w-6xl mx-auto my-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-16">
-          <div className="overflow-x-auto col-span-8">
-            <table className="border  table table-zebra">
-              <thead>
-                <th>Image</th>
-                <th>Facility Name</th>
-                <th>Location</th>
-                <th>Price</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>
-                    <img className="size-16 rounded" src={image} alt={name} />
-                  </th>
-                  <td>{name}</td>
-                  <td>{location}</td>
-                  <td>${pricePerHour}/hr</td>
-                </tr>
-              </tbody>
-            </table>
+      <div className="max-w-6xl mx-auto my-20 px-4 xl:px-0">
+        <div className="flex gap-16 flex-col lg:flex-row">
+          <div className="w-full">
+            <div className="overflow-x-auto">
+              <table className="border flex table table-zebra">
+                <thead>
+                  <th>Image</th>
+                  <th>Facility Name</th>
+                  <th>Location</th>
+                  <th>Price</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>
+                      <img className="size-16 rounded" src={image} alt={name} />
+                    </th>
+                    <td>{name}</td>
+                    <td>{location}</td>
+                    <td>${pricePerHour}/hr</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <div className="my-10">
               <h2 className="text-xl font-bold text-[#333]">
                 {" "}
@@ -122,11 +124,11 @@ const BookingContainer = () => {
                   <h2 className="text-xl font-semibold mb-4">
                     Available Slots : {selector ? selector : "Selected Date"}
                   </h2>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6  border p-6 rounded">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6  border p-6 rounded">
                     {availability?.data?.map((item: any, index: any) => (
                       <div
                         key={index}
-                        className="bg-gray-800 p-3 text-white font-normal rounded-full text-sm text-center"
+                        className="bg-gray-800 p-3 text-white font-normal rounded-full text-xs text-center"
                       >
                         <span>
                           {item.startTime} - {item.endTime}
@@ -139,7 +141,7 @@ const BookingContainer = () => {
             </div>
           </div>
 
-          <div className="col-span-4 p-4 border rounded">
+          <div className=" lg:w-[600px] p-4 border rounded">
             <div>
               <h2 className="text-xl font-bold text-[#333] text-center mb-6">
                 CheckOut

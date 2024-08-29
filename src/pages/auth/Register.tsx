@@ -31,7 +31,15 @@ const Register = () => {
   };
   return (
     <div className="flex min-h-screen bg-[#f9f9f6] justify-center items-center py-12">
-      <Col span={12} className="bg-white p-6 shadow rounded-lg">
+      <Col
+        span={12}
+        xs={{ span: 24 }}
+        sm={{ span: 20 }}
+        md={{ span: 14 }}
+        lg={{ span: 10 }}
+        xl={{ span: 7 }}
+        className="bg-white p-6 shadow rounded-lg"
+      >
         <h2 className="text-2xl font-bold text-[#333] text-center ">
           Register Account
         </h2>
