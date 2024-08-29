@@ -8,7 +8,7 @@ export const userPaths = [
     element: <UserDashboard />,
   },
   {
-    name: "Bookings",
+    name: "My Bookings",
     path: "bookings",
     element: <BookingItems />,
   },

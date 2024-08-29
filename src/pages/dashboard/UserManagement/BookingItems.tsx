@@ -119,7 +119,7 @@ const BookingItems = () => {
     <div>
       <div>
         <h2 className="text-xl font-semibold text-[#333] mb-6">
-          Your Booking Data
+          My Booking Data
         </h2>
 
         <Table

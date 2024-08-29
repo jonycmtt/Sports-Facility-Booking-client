@@ -5,6 +5,7 @@ import { adminPaths } from "../../routes/admin.routes";
 import { userPaths } from "../../routes/user.routes";
 import { useAppSelector } from "../../redux/hook";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
+import { Link } from "react-router-dom";
 
 const userRole = {
   ADMIN: "admin",
@@ -41,11 +42,13 @@ const Sidebar = () => {
       }}
     >
       <div className=" text-2xl h-16 text-white inline-flex justify-center items-center w-full">
-        <img
-          className="w-44"
-          src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/logo.svg"
-          alt=""
-        />
+        <Link to="/">
+          <img
+            className="w-44"
+            src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/logo.svg"
+            alt=""
+          />
+        </Link>
       </div>
       <Menu
         className="bg-[#222]"

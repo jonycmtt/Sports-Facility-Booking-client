@@ -1,10 +1,7 @@
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import {
-  useGetFacilitiesQuery,
-  useGetFacilitiesQueryQuery,
-} from "../../redux/features/facilities/facilitiesApi";
+import { useGetFacilitiesQueryQuery } from "../../redux/features/facilities/facilitiesApi";
 import HeaderBanner from "../../utils/HeaderBanner";
-import { GetProps, Input } from "antd";
+import { GetProps, Input, Pagination } from "antd";
 import SingleFactureFacilities, {
   TFacilitiesDataType,
 } from "../Landing/features/SingleFactureFacilities";
@@ -15,17 +12,23 @@ import { TQueryParams } from "../../types/global";
 type SearchProps = GetProps<typeof Input.Search>;
 
 const FacilitiesContainer = () => {
-  const [fieldQuery, setFieldQuery] = useState<TQueryParams[] | undefined>(
-    undefined
-  );
+  const [fieldQuery, setFieldQuery] = useState<TQueryParams[]>([
+    { name: "page", value: 1 },
+    { name: "limit", value: 4 },
+  ]);
   const { data: facilities, isLoading } =
     useGetFacilitiesQueryQuery(fieldQuery);
-
-  const filterFacilitiesData = facilities?.data.filter(
+  console.log(facilities);
+  const filterFacilitiesData = facilities?.data?.data?.filter(
     (item) => item.isDeleted !== true
   );
 
-  console.log(filterFacilitiesData);
+  // const filterFacilitiesData = facilities?.data || []; // Assume `facilities.data` is the paginated data
+  const totalFacilities = facilities?.data?.meta.total || 0; // Assume `facilities.meta.total` is the total count
+  const currentPage =
+    Number(fieldQuery.find((q) => q.name === "page")?.value) || 1;
+  const pageSize =
+    Number(fieldQuery.find((q) => q.name === "limit")?.value) || 4;
 
   if (isLoading) {
     return <span>loading...</span>;
@@ -34,7 +37,11 @@ const FacilitiesContainer = () => {
   const { Search } = Input;
 
   const onSearch: SearchProps["onSearch"] = (value) => {
-    setFieldQuery([{ name: "search", value: value }]);
+    setFieldQuery((prev) => [
+      ...prev.filter((q) => q.name !== "search"),
+      { name: "search", value: value },
+      { name: "page", value: 1 },
+    ]);
   };
 
   const filterSubmit: SubmitHandler<FieldValues> = (data) => {
@@ -42,7 +49,8 @@ const FacilitiesContainer = () => {
 
     const minPrice = Number(data.target.minPrice.value);
     const maxPrice = Number(data.target.maxPrice.value);
-    setFieldQuery([
+    setFieldQuery((prev) => [
+      ...prev.filter((q) => q.name !== "minPrice" && q.name !== "maxPrice"),
       {
         name: "minPrice",
         value: minPrice,
@@ -51,6 +59,15 @@ const FacilitiesContainer = () => {
         name: "maxPrice",
         value: maxPrice,
       },
+      { name: "page", value: 1 },
+    ]);
+  };
+
+  const handlePaginationChange = (page: number, pageSize: number) => {
+    setFieldQuery((prev) => [
+      ...prev.filter((q) => q.name !== "page" && q.name !== "limit"),
+      { name: "page", value: page },
+      { name: "limit", value: pageSize },
     ]);
   };
 
@@ -63,7 +80,7 @@ const FacilitiesContainer = () => {
             <strong className="text-[#333] font-normal">
               <span className="text-[#097E52] font-semibold">
                 {filterFacilitiesData.length}
-              </span>
+              </span>{" "}
               facilities are listed
             </strong>
           </div>
@@ -110,6 +127,15 @@ const FacilitiesContainer = () => {
               <h2>Not Data Found</h2>
             </div>
           )}
+        </div>
+        {/* Pagination Component */}
+        <div className="flex justify-center mt-8">
+          <Pagination
+            current={Number(currentPage)}
+            pageSize={Number(pageSize)}
+            total={totalFacilities}
+            onChange={handlePaginationChange}
+          />
         </div>
       </div>
     </div>
