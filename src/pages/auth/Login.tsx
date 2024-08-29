@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// import Cookies from "js-cookie";
 import { Button, Col, Divider } from "antd";
 import MainForm from "../../components/form/MainForm";
 import FormInput from "../../components/form/FormInput";
@@ -13,6 +11,7 @@ import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginValidationSchema } from "../../schemas/loginValidationSchema";
+import { ApiError } from "../../types/global";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -47,7 +46,11 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error?.data.message, { id: toastId, duration: 1000 });
+      const apiError = error as ApiError;
+      toast.error(apiError?.data?.message || "An error occurred", {
+        id: toastId,
+        duration: 1000,
+      });
     }
   };
   return (

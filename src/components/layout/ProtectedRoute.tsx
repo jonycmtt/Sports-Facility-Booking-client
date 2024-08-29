@@ -7,9 +7,16 @@ import {
 } from "../../redux/features/auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
 
+interface VerifiedUser {
+  user: {
+    role: string;
+    // add other properties if needed
+  };
+}
+
 type TProtectedRoute = {
   children: ReactNode;
-  role: string | undefined;
+  role?: string | undefined;
 };
 const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
   const token = useAppSelector(selectCurrentToken);
@@ -17,7 +24,7 @@ const ProtectedRoute = ({ children, role }: TProtectedRoute) => {
   let user;
 
   if (token) {
-    user = verifyToken(token);
+    user = verifyToken(token) as VerifiedUser;
   }
 
   console.log(user);

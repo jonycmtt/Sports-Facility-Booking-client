@@ -1,5 +1,5 @@
 import { LuUsers2 } from "react-icons/lu";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { Button } from "antd";
 import {
@@ -10,7 +10,7 @@ import { useGetBookingQuery } from "../../../redux/features/booking/bookingApi";
 
 const Navbar = () => {
   const selectUser = useAppSelector(selectCurrentUser);
-  const currentBookingUser = selectUser?.user._id;
+  const currentBookingUser = selectUser?.user?._id;
   const dispatch = useAppDispatch();
   const { data: bookingData, isLoading } =
     useGetBookingQuery(currentBookingUser);
@@ -21,10 +21,6 @@ const Navbar = () => {
     return <span>...</span>;
   }
   const currentUser = selectUser?.user?.role;
-
-  // const handleUserDashboard = () => {
-  //   navigate("/user/dashboard");
-  // };
   const items = (
     <>
       <li>

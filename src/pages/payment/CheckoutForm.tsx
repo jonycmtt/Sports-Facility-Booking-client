@@ -4,7 +4,6 @@ import axios from "axios";
 import { Modal } from "antd";
 import successLogo from "../../assets/images/success.png";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 
 const CheckoutForm = ({ price }: { price: number }) => {
   const navigate = useNavigate();

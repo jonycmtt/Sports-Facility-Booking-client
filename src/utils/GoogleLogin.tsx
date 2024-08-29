@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { GoogleLogin } from "@react-oauth/google";
 import { toast } from "sonner";
 import { verifyToken } from "./verifyToken";
 import { useAppDispatch } from "../redux/hook";
 import { useNavigate } from "react-router-dom";
 import { setUser, TUser } from "../redux/features/auth/authSlice";
-
 const GoogleLoginAuth = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

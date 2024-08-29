@@ -20,7 +20,7 @@ const FacilitiesContainer = () => {
     useGetFacilitiesQueryQuery(fieldQuery);
   console.log(facilities);
   const filterFacilitiesData = facilities?.data?.data?.filter(
-    (item) => item.isDeleted !== true
+    (item: { isDeleted: boolean }) => item.isDeleted !== true
   );
 
   // const filterFacilitiesData = facilities?.data || []; // Assume `facilities.data` is the paginated data

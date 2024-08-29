@@ -17,6 +17,12 @@ import { useState } from "react";
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 import { useAddBookingMutation } from "../../redux/features/booking/bookingApi";
 import { toast } from "sonner";
+import { ApiError } from "../../types/global";
+
+interface Availability {
+  startTime: string;
+  endTime: string;
+}
 
 const BookingContainer = () => {
   const [addBooking] = useAddBookingMutation();
@@ -38,9 +44,9 @@ const BookingContainer = () => {
   const { image, location, name, pricePerHour, _id: facilityId } = facilityData;
 
   // DatePicker onChange handler
-  const onChange: DatePickerProps["onChange"] = (_date, dateString) => {
-    if (dayjs(dateString, "YYYY-MM-DD", true).isValid()) {
-      const formattedDate = dayjs(dateString).format("YYYY-MM-DD");
+  const onChange: DatePickerProps["onChange"] = (date) => {
+    if (date && date.isValid()) {
+      const formattedDate = dayjs(date).format("YYYY-MM-DD");
       console.log("Formatted Date:", formattedDate); // Debugging line
       dispatch(setDate({ dateString: formattedDate }));
     } else {
@@ -69,15 +75,20 @@ const BookingContainer = () => {
       console.log(res);
     } catch (error) {
       console.log(error);
-      toast.error(error.data.message);
+      const apiError = error as ApiError;
+      toast.error(apiError?.data?.message || "An error occurred", {
+        duration: 1000,
+      });
     }
   };
 
-  const slotOptionsStartTime = availability?.data?.map((item, index) => ({
-    value: item.startTime,
-    label: item.startTime,
-  }));
-  const slotOptionsEndTime = availability?.data?.map((item, index) => ({
+  const slotOptionsStartTime = availability?.data?.map(
+    (item: Availability) => ({
+      value: item.startTime,
+      label: item.startTime,
+    })
+  );
+  const slotOptionsEndTime = availability?.data?.map((item: Availability) => ({
     value: item.endTime,
     label: item.endTime,
   }));

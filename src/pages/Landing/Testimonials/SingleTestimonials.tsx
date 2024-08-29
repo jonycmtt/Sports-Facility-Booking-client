@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,8 +8,16 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Rate } from "antd";
 
+interface Testimonial {
+  statue: string;
+  feedback: string;
+  image: string;
+  name: string;
+}
+
 const SingleTestimonials = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
+  const [data, setData] = useState<Testimonial[]>([]);
 
   useEffect(() => {
     fetch("testimonials.json")

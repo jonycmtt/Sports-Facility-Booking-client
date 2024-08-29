@@ -8,13 +8,11 @@ import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import facilityValidationSchema from "../../../../schemas/facilityValidationSchema";
 
-// export type TFacilitiesData = {
-//   name: string;
-//   description: string;
-//   pricePerHour: number;
-//   location: string;
-//   image: string;
-// };
+interface ApiError {
+  data: {
+    message: string;
+  };
+}
 
 const CreateFacilities = () => {
   const [addFacility] = useAddFacilityMutation();
@@ -32,7 +30,11 @@ const CreateFacilities = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error?.data?.message, { id: toastId, duration: 1000 });
+      const apiError = error as ApiError;
+      toast.error(apiError?.data?.message || "An error occurred", {
+        id: toastId,
+        duration: 1000,
+      });
     }
   };
   return (
