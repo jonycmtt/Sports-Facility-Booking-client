@@ -5,6 +5,8 @@ import FormTextArea from "../../../../components/form/FormTextArea";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { useAddFacilityMutation } from "../../../../redux/features/facilities/facilitiesApi";
 import { toast } from "sonner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import facilityValidationSchema from "../../../../schemas/facilityValidationSchema";
 
 // export type TFacilitiesData = {
 //   name: string;
@@ -30,7 +32,7 @@ const CreateFacilities = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong", { id: toastId, duration: 1000 });
+      toast.error(error?.data?.message, { id: toastId, duration: 1000 });
     }
   };
   return (
@@ -39,7 +41,10 @@ const CreateFacilities = () => {
 
       <Row>
         <Col span={24}>
-          <MainForm onSubmit={onSubmit}>
+          <MainForm
+            onSubmit={onSubmit}
+            resolver={zodResolver(facilityValidationSchema)}
+          >
             <Row gutter={12}>
               <Col span={24} md={{ span: 8 }}>
                 <FormInput

@@ -11,6 +11,8 @@ import { verifyToken } from "../../utils/verifyToken";
 import GoogleLoginAuth from "../../utils/GoogleLogin";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginValidationSchema } from "../../schemas/loginValidationSchema";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +47,7 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong!", { id: toastId, duration: 1000 });
+      toast.error(error?.data.message, { id: toastId, duration: 1000 });
     }
   };
   return (
@@ -54,7 +56,11 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-[#333] text-center ">Login</h2>
 
         <div className="my-6 text-center">
-          <MainForm onSubmit={onSubmit} defaultValues={defaultValues}>
+          <MainForm
+            onSubmit={onSubmit}
+            resolver={zodResolver(loginValidationSchema)}
+            defaultValues={defaultValues}
+          >
             <FormInput type={"email"} name={"email"} placeholder="Email" />
             <FormInput
               type={"password"}
