@@ -1,7 +1,7 @@
 import { Button, Col, Divider } from "antd";
 import MainForm from "../../components/form/MainForm";
 import FormInput from "../../components/form/FormInput";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hook";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ import { ApiError } from "../../types/global";
 
 const Login = () => {
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const defaultValues = {
     email: "jonyu@gmail.com",
@@ -42,7 +42,7 @@ const Login = () => {
           })
         );
         toast.success("Login Success", { id: toastId, duration: 1000 });
-        // navigate("/");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
