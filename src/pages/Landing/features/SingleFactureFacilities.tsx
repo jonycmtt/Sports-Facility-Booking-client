@@ -18,7 +18,6 @@ const SingleFactureFacilities = ({
   item: TFacilitiesDataType;
   button: string;
 }) => {
-  console.log(item);
   const { description, image, location, name, pricePerHour, _id } = item;
   return (
     <div className="relative card card-bordered shadow-sm overflow-hidden">
@@ -35,7 +34,7 @@ const SingleFactureFacilities = ({
           </div>
           <FaRegHeart className="text-xl text-black cursor-pointer hover:text-[#097E52]" />
         </div>
-        <div className="my-3">
+        <div className="my-3 flex flex-col justify-between">
           <Link to={`/facility-details/${_id}`}>
             <h2 className="text-lg font-bold text-[#333]">{name}</h2>
           </Link>

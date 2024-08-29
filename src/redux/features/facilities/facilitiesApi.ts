@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import baseApi from "../../api/baseApi";
 
 const facilitiesApi = baseApi.injectEndpoints({
@@ -7,9 +8,23 @@ const facilitiesApi = baseApi.injectEndpoints({
         if (id) {
           return { url: `/facility/${id}`, method: "GET" };
         }
+
         return { url: "/facility", method: "GET" };
       },
-      providesTags: ["facility"],
+    }),
+    getFacilitiesQuery: builder.query({
+      query: (args) => {
+        console.log(args);
+        const params = new URLSearchParams();
+
+        if (args) {
+          args.forEach((item: any) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+
+        return { url: "/facility", method: "GET", params };
+      },
     }),
 
     addFacility: builder.mutation({
@@ -42,4 +57,5 @@ export const {
   useGetFacilitiesQuery,
   useDeleteFacilitiesMutation,
   useUpdateFacilitiesMutation,
+  useGetFacilitiesQueryQuery,
 } = facilitiesApi;

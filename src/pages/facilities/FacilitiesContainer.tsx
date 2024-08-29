@@ -1,33 +1,57 @@
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { useGetFacilitiesQuery } from "../../redux/features/facilities/facilitiesApi";
+import {
+  useGetFacilitiesQuery,
+  useGetFacilitiesQueryQuery,
+} from "../../redux/features/facilities/facilitiesApi";
 import HeaderBanner from "../../utils/HeaderBanner";
 import { GetProps, Input } from "antd";
 import SingleFactureFacilities, {
   TFacilitiesDataType,
 } from "../Landing/features/SingleFactureFacilities";
 
+import { useState } from "react";
+import { TQueryParams } from "../../types/global";
+
 type SearchProps = GetProps<typeof Input.Search>;
 
 const FacilitiesContainer = () => {
-  const { data: facilities, isLoading } = useGetFacilitiesQuery(undefined);
-  console.log(facilities?.data);
+  const [fieldQuery, setFieldQuery] = useState<TQueryParams[] | undefined>(
+    undefined
+  );
+  const { data: facilities, isLoading } =
+    useGetFacilitiesQueryQuery(fieldQuery);
+
+  const filterFacilitiesData = facilities?.data.filter(
+    (item) => item.isDeleted !== true
+  );
+
+  console.log(filterFacilitiesData);
+
   if (isLoading) {
     return <span>loading...</span>;
   }
+
   const { Search } = Input;
 
-  const onSearch: SearchProps["onSearch"] = (value) => console.log(value);
+  const onSearch: SearchProps["onSearch"] = (value) => {
+    setFieldQuery([{ name: "search", value: value }]);
+  };
 
   const filterSubmit: SubmitHandler<FieldValues> = (data) => {
     data.preventDefault();
 
     const minPrice = Number(data.target.minPrice.value);
     const maxPrice = Number(data.target.maxPrice.value);
-    const filterInfo = {
-      minPrice,
-      maxPrice,
-    };
-    console.log(filterInfo);
+    setFieldQuery([
+      {
+        name: "minPrice",
+        value: minPrice,
+      },
+      {
+        name: "maxPrice",
+        value: maxPrice,
+      },
+    ]);
   };
 
   return (
@@ -38,7 +62,7 @@ const FacilitiesContainer = () => {
           <div>
             <strong className="text-[#333] font-normal">
               <span className="text-[#097E52] font-semibold">
-                {facilities?.data.length}{" "}
+                {filterFacilitiesData.length}
               </span>
               facilities are listed
             </strong>
@@ -74,9 +98,18 @@ const FacilitiesContainer = () => {
         </div>
 
         <div className="grid my-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {facilities?.data?.map((item: TFacilitiesDataType) => (
-            <SingleFactureFacilities button="View Details" item={item} />
-          ))}
+          {filterFacilitiesData.length ? (
+            <>
+              {" "}
+              {filterFacilitiesData.map((item: TFacilitiesDataType) => (
+                <SingleFactureFacilities button="View Details" item={item} />
+              ))}
+            </>
+          ) : (
+            <div className="flex col-span-12 justify-center items-center w-full text-center">
+              <h2>Not Data Found</h2>
+            </div>
+          )}
         </div>
       </div>
     </div>
