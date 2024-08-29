@@ -6,14 +6,12 @@ import {
   logout,
   selectCurrentUser,
 } from "../../../redux/features/auth/authSlice";
-import { IoCartOutline } from "react-icons/io5";
 import { useGetBookingQuery } from "../../../redux/features/booking/bookingApi";
 
 const Navbar = () => {
   const selectUser = useAppSelector(selectCurrentUser);
   const currentBookingUser = selectUser?.user._id;
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { data: bookingData, isLoading } =
     useGetBookingQuery(currentBookingUser);
 
@@ -24,9 +22,9 @@ const Navbar = () => {
   }
   const currentUser = selectUser?.user?.role;
 
-  const handleUserDashboard = () => {
-    navigate("/user/dashboard");
-  };
+  // const handleUserDashboard = () => {
+  //   navigate("/user/dashboard");
+  // };
   const items = (
     <>
       <li>
@@ -123,7 +121,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-lg"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] text-black mt-3 w-52 p-2 shadow text-lg"
             >
               {items}
             </ul>
