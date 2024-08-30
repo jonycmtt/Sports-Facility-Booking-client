@@ -13,11 +13,13 @@ import FeatureDetails from "../pages/Landing/features/FeatureDetails";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import BookingContainer from "../pages/booking/BookingContainer";
+import ErrorElement from "../pages/ErrorElement";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorElement />,
     children: [
       {
         path: "/",
