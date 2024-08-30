@@ -8,6 +8,13 @@ The Sports Facility Booking Platform allows users to book sports facilities, man
 
 This project integrates a frontend interface with a backend system, enabling users to browse facilities, book them, and manage their bookings. Administrators can manage facilities, view bookings, and handle user accounts.
 
+## Admin Login Information :
+
+```base
+   Email: jonyu@gmail.com
+   Password: 123456
+```
+
 ## Features
 
 - **Landing Page:** Overview of the platform, featured facilities, and booking process.

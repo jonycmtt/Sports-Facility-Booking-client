@@ -18,10 +18,10 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const defaultValues = {
-    email: "jonyu@gmail.com",
-    password: "123456",
-  };
+  // const defaultValues = {
+  //   email: "jonyu@gmail.com",
+  //   password: "123456",
+  // };
 
   const [login] = useLoginMutation();
 
@@ -71,7 +71,6 @@ const Login = () => {
           <MainForm
             onSubmit={onSubmit}
             resolver={zodResolver(loginValidationSchema)}
-            defaultValues={defaultValues}
           >
             <FormInput type={"email"} name={"email"} placeholder="Email" />
             <FormInput
