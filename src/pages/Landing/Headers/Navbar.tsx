@@ -123,11 +123,13 @@ const Navbar = () => {
             </ul>
           </div>
           <div>
-            <img
-              className="w-44"
-              src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/logo.svg"
-              alt=""
-            />
+            <Link to="/">
+              <img
+                className="w-44"
+                src="https://dreamsports.dreamstechnologies.com/react/template/assets/img/logo.svg"
+                alt=""
+              />
+            </Link>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
