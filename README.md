@@ -69,32 +69,32 @@ This project integrates a frontend interface with a backend system, enabling use
 
 ### 2. User Dashboard
 
-![User Dashboard Screenshot](./assets/user-dashboard-screenshot.png)
+![User Dashboard Screenshot](https://github.com/jonycmtt/Sports-Facility-Booking-client/blob/main/src/assets/github/user.png)
 
 **Item:** User Dashboard  
 **Details:** The user dashboard provides a personalized experience with a welcome message and a list of the user's bookings. Users can view details of their bookings and cancel them if needed. This page helps users manage their bookings and access their personal information.
 
 ### 3. Admin Dashboard
 
-![Admin Dashboard Screenshot](./assets/admin-dashboard-screenshot.png)
+![Admin Dashboard Screenshot](https://github.com/jonycmtt/Sports-Facility-Booking-client/blob/main/src/assets/github/admin.png)
 
 **Item:** Admin Dashboard  
 **Details:** The admin dashboard includes tools for managing sports facilities and bookings. Admins can perform CRUD operations on facilities, view all bookings, and create new admin accounts. This page provides the necessary functionalities for administrators to oversee and manage the platform effectively.
 
 ### 4. Facility Details Page
 
-![Facility Details Page Screenshot](./assets/facility-details-page-screenshot.png)
+![Facility Details Page Screenshot](https://github.com/jonycmtt/Sports-Facility-Booking-client/blob/main/src/assets/github/faciltiy.png)
+
+![Facility Details Page Screenshot](https://github.com/jonycmtt/Sports-Facility-Booking-client/blob/main/src/assets/github/facility-detail.png)
 
 **Item:** Facility Details Page  
 **Details:** The facility details page displays comprehensive information about a specific sports facility. It includes images, name, location, price, and a detailed description of the facility. The page also features a "Book Now" button that navigates users to the booking page. This page helps users make informed decisions before booking a facility.
 
 ### 5. Booking Page
 
-![Booking Page Screenshot](./assets/booking-page-screenshot.png)
+![Booking Page Screenshot](https://github.com/jonycmtt/Sports-Facility-Booking-client/blob/main/src/assets/github/booking.png)
 
 **Item:** Booking Page  
 **Details:** The booking page allows users to select a facility, check its availability, and complete the booking process. It includes an availability checker with a date picker, a booking form, and payment integration. This page guides users through the process of booking a facility and making payments.
 
 ---
-
-Replace `./assets/...` with the actual paths to your screenshot files, and make sure the descriptions accurately reflect the functionality and purpose of each page.
