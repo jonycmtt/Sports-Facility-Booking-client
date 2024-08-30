@@ -1,7 +1,11 @@
 import { Table, TableColumnsType, TableProps } from "antd";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
-import { useGetBookingQuery } from "../../../redux/features/booking/bookingApi";
+import {
+  useCancelBookingMutation,
+  useGetBookingQuery,
+} from "../../../redux/features/booking/bookingApi";
 import { useAppSelector } from "../../../redux/hook";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 
 export type TBookingData = {
   date: string;
@@ -32,6 +36,8 @@ const BookingItems = () => {
   const { data: bookingData, isFetching } =
     useGetBookingQuery(currentBookingUser);
 
+  const [cancelBooking] = useCancelBookingMutation();
+
   const tableData = bookingData?.data?.map(
     ({
       _id,
@@ -53,6 +59,11 @@ const BookingItems = () => {
       isBooked,
     })
   );
+
+  const CancelOrder: SubmitHandler<FieldValues> = (id) => {
+    // console.log(id);
+    cancelBooking(id);
+  };
 
   const columns: TableColumnsType<DataType> = [
     {
@@ -98,9 +109,32 @@ const BookingItems = () => {
       dataIndex: "isBooked",
       render: (isBooked) => {
         return (
-          <button className="btn btn-sm bg-success text-white">
-            {isBooked && "Confirmed"}
-          </button>
+          <>
+            {isBooked === "confirmed" ? (
+              <span className="bg-success p-1 px-2 rounded-full text-white">
+                {isBooked && "Confirmed"}
+              </span>
+            ) : (
+              <span className="bg-info p-1 px-2 rounded-full text-white">
+                {isBooked && "Canceled"}
+              </span>
+            )}
+          </>
+        );
+      },
+    },
+    {
+      title: "Action",
+      render: (record) => {
+        return (
+          <>
+            <button
+              onClick={() => CancelOrder(record?.key)}
+              className="btn btn-sm bg-error text-white"
+            >
+              Cancel
+            </button>
+          </>
         );
       },
     },

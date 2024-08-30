@@ -104,15 +104,25 @@ const Bookings = () => {
     },
     {
       title: "Status",
-      render: () => {
+      dataIndex: "isBooked",
+      render: (isBooked) => {
         return (
           <>
-            <button
-              // onClick={() => showViewModal(record)}
-              className="btn btn-sm bg-success text-white"
-            >
-              Details
-            </button>
+            {isBooked === "confirmed" ? (
+              <button
+                // onClick={() => showViewModal(record)}
+                className=" bg-success p- px-2 rounded-full capitalize text-white"
+              >
+                {isBooked}
+              </button>
+            ) : (
+              <button
+                // onClick={() => showViewModal(record)}
+                className="bg-info p- px-2 rounded-full capitalize text-white"
+              >
+                {isBooked}
+              </button>
+            )}
           </>
         );
       },

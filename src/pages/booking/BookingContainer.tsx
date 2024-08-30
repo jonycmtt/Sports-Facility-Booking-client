@@ -27,6 +27,7 @@ interface Availability {
 const BookingContainer = () => {
   const [addBooking] = useAddBookingMutation();
   const [showPayment, setShowPayment] = useState(false);
+  // const [bookingRendomInfo, setBookingRendomInfo] = useState({});
   const currentUser = useAppSelector(selectCurrentUser);
   const dispatch = useAppDispatch();
   const selector = useAppSelector((item) => item?.date?.date);
@@ -67,6 +68,7 @@ const BookingContainer = () => {
       payableAmount: pricePerHour,
       user: currentUserId,
     };
+    // setBookingRendomInfo(bookingInfo);
     try {
       const res = await addBooking(bookingInfo).unwrap();
       if (res.success) {
