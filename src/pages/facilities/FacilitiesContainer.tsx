@@ -14,7 +14,7 @@ type SearchProps = GetProps<typeof Input.Search>;
 const FacilitiesContainer = () => {
   const [fieldQuery, setFieldQuery] = useState<TQueryParams[]>([
     { name: "page", value: 1 },
-    { name: "limit", value: 4 },
+    { name: "limit", value: 6 },
   ]);
   const { data: facilities, isLoading } =
     useGetFacilitiesQueryQuery(fieldQuery);

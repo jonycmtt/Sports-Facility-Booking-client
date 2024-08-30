@@ -20,8 +20,9 @@ const CreateFacilities = () => {
     const toastId = toast.loading("Facility Creating...");
     const dataInfo = {
       ...data,
-      pricePerHour: Number(data.pricePerHour),
+      pricePerHour: parseFloat(data?.pricePerHour) || 0,
     };
+    console.log(dataInfo);
 
     try {
       const result = await addFacility(dataInfo).unwrap();
@@ -59,10 +60,10 @@ const CreateFacilities = () => {
 
               <Col span={24} md={{ span: 8 }}>
                 <FormInput
-                  type={"number"}
+                  type={"text"}
                   name={"pricePerHour"}
                   label="Price Per Hour"
-                  placeholder="Facility Name"
+                  placeholder="Facility Price"
                 />
               </Col>
               <Col span={24} md={{ span: 8 }}>
