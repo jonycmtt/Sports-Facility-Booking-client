@@ -14,6 +14,7 @@ import { loginValidationSchema } from "../../schemas/loginValidationSchema";
 import { ApiError } from "../../types/global";
 
 const Login = () => {
+  console.log(import.meta.env.VITE_SECRET_GOOGLE_ID);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
