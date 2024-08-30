@@ -52,23 +52,17 @@ This project integrates a frontend interface with a backend system, enabling use
 
 # Visit the landing page
 
-echo "Frontend Link: https://sports-facility-nu.vercel.app/"
+"Frontend Link: https://sports-facility-nu.vercel.app/"
 
 # Access the backend
 
-echo "Backend Link: https://sport-facilify-modify.vercel.app/"
-
-# Log in or register to manage your bookings.
-
-# Admin dashboard allows you to manage facilities and bookings.
-
-# Use the booking page to select facilities, check availability, and complete bookings.
+"Backend Link: https://sport-facilify-modify.vercel.app/"
 
 ## Using and Explanations
 
 ### 1. Landing Page
 
-![Landing Page Screenshot](./assets/landing-page-screenshot.png)
+![Landing Page Screenshot](https://github.com/jonycmtt/Sports-Facility-Booking-client/blob/main/src/assets/github/landing.png)
 
 **Item:** Landing Page  
 **Details:** The landing page offers an overview of the platform, featuring a hero section with a call-to-action button, navigation links, and a section showcasing popular facilities. It serves as the entry point for users to explore the platform and access various functionalities.
