@@ -28,7 +28,7 @@ const FacilitiesContainer = () => {
   const currentPage =
     Number(fieldQuery.find((q) => q.name === "page")?.value) || 1;
   const pageSize =
-    Number(fieldQuery.find((q) => q.name === "limit")?.value) || 4;
+    Number(fieldQuery.find((q) => q.name === "limit")?.value) || 6;
 
   if (isLoading) {
     return <span>loading...</span>;

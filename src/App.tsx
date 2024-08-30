@@ -3,10 +3,10 @@ import ScrollToTop from "./utils/ScrollToTop";
 
 const App = () => {
   return (
-    <div>
+    <>
       <MainLayout />
       <ScrollToTop />
-    </div>
+    </>
   );
 };
 

@@ -18,7 +18,7 @@ createRoot(document.getElementById("root")!).render(
         </PersistGate>
       </Provider>
     </GoogleOAuthProvider>
-    ;
+
     <Toaster />
   </StrictMode>
 );
